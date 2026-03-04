@@ -1,7 +1,13 @@
 # March 4th 2026 
+## Notes for the future:
+  * make hard negatives (aka genomic negatives), not just use random seq then the model learn that random nucleotides mean not promoter
+  * promoted belonging to the dame gene family will be very similar, if you have the promoter in train and a very similar one in test then the model is not generalized. so its better to split by gene, chromosone, genomic regions, instead of spliting by sequence.
+  * all EPD have TSS at position 50, so the model may become positional bias, it just makes sure TSS is at 50 and classifies it as a promoter. this does not make the model genome-wide promoter detection
+  * the flanking sequences of promoters may be quite similar. If these similar sequences are both in the train and test, then it is artifically boosts performance.
+  * promoter datasets are small. if you see high accruracy it doesnt mean the model learned biology, but patterns specific to the data set. 
 ## Understanding the dataset.
   * Plan:
-    - [] download zea mays promoters from EPDnew,
+    - [X] download zea mays promoters from EPDnew. It is located in the google drive */content/drive/MyDrive/Projects/promoter_transformer/data)*
     - [] answer question,
     - [] validate assumptions,
     - [] make script so show dataset info
@@ -63,4 +69,6 @@
     Example
     chr1 TSS 123456 + 1 PROMOTER_ID
   * **.fps** SSA toolkit format. Stores promoter position, motif information, feature annotations.
-  * **.idx** index file. contains promoter ID, byte offset, entry length. 
+  * **.idx** index file. contains promoter ID, byte offset, entry length.
+
+
